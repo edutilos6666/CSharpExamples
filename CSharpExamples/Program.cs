@@ -23,12 +23,30 @@ namespace CSharpExamples
     {
         static void Main(string[] args)
         {
-            TestThreadExample(); 
+            TestGenericCollections(); 
         }
 
         private const string newline = "\r\n"; 
         private static Random rand = new Random();
 
+
+        private static void TestGenericCollections()
+        {
+            GenericCollections gc = new GenericCollections();
+            gc.TestSortedSet(); 
+        }
+
+        private static void TestMysqlExample()
+        {
+            MysqlExample me = new MysqlExample();
+            me.T1(); 
+        }
+
+        private static void TestXmlExample()
+        {
+            XmlExample xe = new XmlExample();
+            xe.T1(); 
+        }
 
         private static void TestThreadExample()
         {
