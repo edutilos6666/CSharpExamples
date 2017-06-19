@@ -44,11 +44,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Book.cs" />
+    <Compile Include="CollectionsExample.cs" />
+    <Compile Include="CustomAttributeExample.cs" />
+    <Compile Include="DelegateExample.cs" />
+    <Compile Include="FileIOExample.cs" />
+    <Compile Include="GenericsExample.cs" />
+    <Compile Include="IndexerExample.cs" />
     <Compile Include="OperatorOverloading.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReflectionExample.cs" />
     <Compile Include="Shape.cs" />
     <Compile Include="SimpleMath.cs" />
+    <Compile Include="ThreadExample.cs" />
     <Compile Include="Worker.cs" />
   </ItemGroup>
   <ItemGroup>

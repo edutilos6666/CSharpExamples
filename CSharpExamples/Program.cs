@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions; 
 
 namespace CSharpExamples
 {
@@ -22,12 +23,131 @@ namespace CSharpExamples
     {
         static void Main(string[] args)
         {
-            TestOperatorOverloading(); 
+            TestThreadExample(); 
         }
 
         private const string newline = "\r\n"; 
         private static Random rand = new Random();
 
+
+        private static void TestThreadExample()
+        {
+            ThreadExample te = new ThreadExample();
+            te.T1(); 
+        }
+
+        private static void TestGenericsExample()
+        {
+            GenericsRunner runner = new GenericsRunner();
+            // runner.T2<long, string ,int, double, bool>(1L, "foo", 10, 100.0, true); 
+            runner.T3(); 
+        }
+
+        private static void TestCollectionsExample()
+        {
+            CollectionsExample ce = new CollectionsExample();
+            ce.TestBitArray(); 
+        }
+
+        private static void TestDelegateExample()
+        {
+            DelegateExample de = new DelegateExample();
+            de.T4(); 
+        }
+
+        private static void TestIndexerExample()
+        {
+            IndexerExample ie = new IndexerExample(); 
+            for(int i=0; i< 10; ++i)
+            {
+                ie[i] = "foo " + i; 
+            }
+
+            Console.WriteLine("<<Indexer Values>>"); 
+            for(int i=0; i< 10; ++i)
+            {
+                Console.WriteLine("{0}", ie[i]); 
+            }
+
+            string searchStr = "foo 1";
+            Console.WriteLine("index of {0} = {1}", searchStr, ie[searchStr]); 
+        }
+
+
+        private static void TestReflectionExample()
+        {
+            ReflectionExample re = new ReflectionExample();
+            re.T2(); 
+        }
+
+
+        [Obsolete("Use NewMethod instead", false)]
+        private static void OldMethod()
+        {
+            Console.WriteLine("OldMethod was invoked."); 
+        }
+
+        private static void NewMethod()
+        {
+            Console.WriteLine("NewMethod was invoked."); 
+        }
+
+        private static void TestDateTime()
+        {
+            DateTime dt = DateTime.Now;
+            PrintDateTime(dt); 
+            dt = new DateTime(1991, 12, 8, 10, 10, 10);
+            PrintDateTime(dt);
+
+            dt = dt.AddYears(1)
+                .AddMonths(1)
+                .AddDays(1)
+                .AddHours(1)
+                .AddMinutes(1)
+                .AddSeconds(1);
+
+            PrintDateTime(dt); 
+        }
+
+        private static void PrintDateTime(DateTime dt)
+        {
+            int year = dt.Year;
+            int month = dt.Month;
+            int day = dt.Day;
+            int hour = dt.Hour;
+            int minute = dt.Minute;
+            int second = dt.Second;
+            Console.WriteLine("{0}-{1}-{2} time: {3}:{4}:{5}",
+                year, month, day, hour, minute, second);
+        }
+
+
+        private static void TestRegexp()
+        {
+            string pattern = "\\s+"; 
+            Regex regex = new Regex(pattern);
+            string input = "Hello     World";
+            string replacement = " ";
+            string output = regex.Replace(input, replacement);
+            Console.WriteLine("input length = {0}", input.Length);
+            Console.WriteLine("output length = {0}", output.Length);
+
+
+            input = "foo bar foobimfoo";
+            pattern = "foo"; 
+            MatchCollection matches = Regex.Matches(input, pattern); 
+            foreach(var match in matches)
+            {
+                Console.WriteLine(match); 
+            }
+        }
+
+        private static void TestFileIOExample()
+        {
+            FileIOExample io = new FileIOExample();
+            //io.Example1();
+            io.Example5(); 
+        }
 
 
         private static void TestOperatorOverloading()
