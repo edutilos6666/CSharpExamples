@@ -23,12 +23,24 @@ namespace CSharpExamples
     {
         static void Main(string[] args)
         {
-            TestGenericCollections(); 
+            TestStringBuilder(); 
         }
 
         private const string newline = "\r\n"; 
         private static Random rand = new Random();
 
+
+
+        private static void TestStringBuilder()
+        {
+            const string newline = "\r\n"; 
+
+            StringBuilder sb = new StringBuilder();
+            sb.Append("foo").Append(newline)
+                .Append("bar").Append(newline)
+                .Append("bim").Append(newline);
+            Console.WriteLine(sb.ToString()); 
+        }
 
         private static void TestGenericCollections()
         {
